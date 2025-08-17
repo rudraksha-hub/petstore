@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Book Now | Hum Tum Aur Poonch | Premium Pet Grooming Services 🐾</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+  />
+  <style>
+    :root {
+      --pet-orange: #FF7F50;
+      --pet-orange-light: #FFA07A;
+      --pet-orange-dark: #FF6347;
+      --pet-sky-blue: #87CEEB;
+      --pet-sky-blue-light: #B0E0E6;
+      --pet-sky-blue-dark: #4682B4;
+      --pet-gold: #FFD700;
+      --pet-white: #FFFFFF;
+      --pet-cream: #FFFEF7;
+      --pet-dark: #2F4F4F;
+      --pet-gray-light: #F8F9FA;
+
+      --color-primary: var(--pet-orange);
+      --color-primary-hover: var(--pet-orange-light);
+      --color-primary-active: var(--pet-orange-dark);
+      --color-secondary: var(--pet-sky-blue);
+      --color-background: var(--pet-cream);
+      --color-surface: var(--pet-white);
+      --color-text: var(--pet-dark);
+      --color-accent: var(--pet-gold);
+
+      --gradient-primary: linear-gradient(135deg, var(--pet-orange) 0%, var(--pet-orange-light) 100%);
+      --gradient-secondary: linear-gradient(135deg, var(--pet-sky-blue) 0%, var(--pet-sky-blue-light) 100%);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--pet-cream);
+      color: var(--pet-dark);
+      line-height: 1.6;
+    }
+
+    /* Header */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      backdrop-filter: blur(10px);
+      background: rgba(255, 255, 255, 0.95);
+      border-bottom: 2px solid var(--pet-orange);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .nav {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav__title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--pet-sky-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      text-decoration: none;
+    }
+
+    .nav__tagline {
+      font-size: 0.75rem;
+      font-weight: 500;
+      color: var(--pet-orange);
+      margin-top: 4px;
+    }
+
+    .back-btn {
+      background: var(--gradient-secondary);
+      color: white;
+      border-radius: 25px;
+      padding: 0.5rem 1rem;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(135, 206, 235, 0.4);
+    }
+
+    /* Main Content */
+    .main {
+      max-width: 800px;
+      margin: 110px auto 40px;
+      padding: 0 1rem;
+    }
+
+    .booking-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .booking-title {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .booking-subtitle {
+      font-size: 1.1rem;
+      opacity: 0.8;
+    }
+
+    /* Form */
+    .booking-form {
+      background: var(--pet-white);
+      padding: 2.5rem;
+      border-radius: 20px;
+      border: 2px solid rgba(255, 127, 80, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-section {
+      margin-bottom: 2rem;
+    }
+
+    .section-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: var(--pet-sky-blue);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group.full-width {
+      grid-column: 1 / -1;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.75rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: 2px solid #e1e5e9;
+      font-family: 'Poppins', sans-serif;
+      transition: all 0.3s ease;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--pet-orange);
+      box-shadow: 0 0 0 3px rgba(255, 127, 80, 0.1);
+      outline: none;
+    }
+
+    textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    /* Service Options */
+    .service-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .service-option {
+      background: #f8f9fa;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1.5rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .service-option:hover {
+      border-color: var(--pet-orange);
+      background: rgba(255, 127, 80, 0.05);
+    }
+
+    .service-option.selected {
+      border-color: var(--pet-orange);
+      background: rgba(255, 127, 80, 0.1);
+    }
+
+    .service-option input[type='radio'] {
+      display: none;
+    }
+
+    .service-name {
+      font-weight: 600;
+      color: var(--pet-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .service-price {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--pet-orange);
+    }
+
+    /* Size Options */
+    .size-options {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 1rem;
+    }
+
+    .size-option {
+      flex: 1;
+      min-width: 120px;
+      background: #f8f9fa;
+      border: 2px solid transparent;
+      border-radius: 15px;
+      padding: 1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .size-option:hover {
+      border-color: var(--pet-sky-blue);
+    }
+
+    .size-option.selected {
+      border-color: var(--pet-sky-blue);
+      background: rgba(135, 206, 235, 0.1);
+    }
+
+    .size-option input[type='radio'] {
+      display: none;
+    }
+
+    /* Date and Time */
+    .datetime-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    /* Submit Button */
+    .submit-section {
+      text-align: center;
+      margin-top: 2rem;
+      padding-top: 2rem;
+      border-top: 2px solid #f0f0f0;
+    }
+
+    .submit-btn {
+      background: var(--gradient-primary);
+      color: white;
+      padding: 1rem 3rem;
+      border: none;
+      border-radius: 50px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      cursor: pointer;
+      gap: 0.5rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 200px;
+      transition: all 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+    }
+
+    /* Emergency Contact */
+    .emergency-contact {
+      background: linear-gradient(135deg, rgba(255, 127, 80, 0.1) 0%, rgba(135, 206, 235, 0.1) 100%);
+      padding: 1.5rem;
+      border-radius: 15px;
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .emergency-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--pet-dark);
+      margin-bottom: 0.5rem;
+    }
+
+    .emergency-number {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--pet-orange);
+    }
+
+    /* Success Message */
+    .success-message {
+      display: none;
+      background: linear-gradient(135deg, #4caf50 0%, #45a049 100%);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 1rem;
+      color: white;
+      text-align: center;
+    }
+
+    .success-message.show {
+      display: block;
+    }
+
+    @media (max-width: 768px) {
+      .form-row,
+      .datetime-row {
+        grid-template-columns: 1fr;
+      }
+
+      .size-options {
+        flex-direction: column;
+      }
+
+      .booking-form {
+        padding: 1.5rem;
+      }
+
+      .booking-title {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav class="nav">
+      <div class="nav__brand">
+        <a href="index.html" class="nav__title">
+          <span class="brand-emoji">🐾</span> Hum Tum Aur Poonch
+        </a>
+        <p class="nav__tagline">Premium Pet Grooming</p>
+      </div>
+      <a href="index.html" class="back-btn"
+        ><i class="fas fa-arrow-left"></i> Back to Home</a
+      >
+    </nav>
+  </header>
+
+  <main class="main">
+    <div class="container">
+      <div class="booking-header">
+        <h1 class="booking-title">Book Your Pet's Grooming Appointment 🐕</h1>
+        <p class="booking-subtitle">
+          Fill out the form below and we'll contact you to confirm your
+          appointment
+        </p>
+      </div>
+
+      <div id="successMessage" class="success-message">
+        <i class="fas fa-check-circle"></i> Thank you! Your booking request has
+        been submitted. We'll contact you within 2 hours to confirm your
+        appointment.
+      </div>
+
+      <form id="bookingForm" class="booking-form" novalidate>
+        <!-- Owner Info -->
+        <div class="form-section">
+          <h3 class="section-title"><i class="fas fa-user"></i> Owner Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="ownerName">Full Name *</label>
+              <input type="text" id="ownerName" name="ownerName" required />
+            </div>
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" />
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp Number</label>
+              <input type="tel" id="whatsapp" name="whatsapp" />
+            </div>
+          </div>
+          <div class="form-group full-width">
+            <label for="address">Address *</label>
+            <textarea
+              id="address"
+              name="address"
+              placeholder="Complete address for home service"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Pet Info -->
+        <div class="form-section">
+          <h3 class="section-title"><i class="fas fa-paw"></i> Pet Information</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="petName">Pet Name *</label>
+              <input type="text" id="petName" name="petName" required />
+            </div>
+            <div class="form-group">
+              <label for="petType">Pet Type *</label>
+              <select id="petType" name="petType" required>
+                <option value="">Select Pet Type</option>
+                <option value="dog">Dog 🐕</option>
+                <option value="cat">Cat 🐱</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label for="breed">Breed</label>
+              <input
+                type="text"
+                id="breed"
+                name="breed"
+                placeholder="e.g., Golden Retriever, Persian"
+              />
+            </div>
+            <div class="form-group">
+              <label for="age">Age</label>
+              <input type="text" id="age" name="age" placeholder="e.g., 2 years, 6 months" />
+            </div>
+          </div>
+
+          <label>Pet Size *</label>
+          <div class="size-options">
+            <div class="size-option" onclick="selectSize(this, 'small')">
+              <input type="radio" name="petSize" value="small" required />
+              <div class="service-name">🐕‍🦺 Small</div>
+              <div style="font-size: 0.9rem; opacity: 0.7;">Up to 15kg</div>
+            </div>
+            <div class="size-option" onclick="selectSize(this, 'medium')">
+              <input type="radio" name="petSize" value="medium" required />
+              <div class="service-name">🐩 Medium</div>
+              <div style="font-size: 0.9rem; opacity: 0.7;">15-30kg</div>
+            </div>
+            <div class="size-option" onclick="selectSize(this, 'large')">
+              <input type="radio" name="petSize" value="large" required />
+              <div class="service-name">🦮 Large</div>
+              <div style="font-size: 0.9rem; opacity: 0.7;">Over 30kg</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="specialNeeds">Special Needs / Medical Conditions</label>
+            <textarea
+              id="specialNeeds"
+              name="specialNeeds"
+              placeholder="Any health issues, behavioral concerns, or special requirements"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Service Selection -->
+        <div class="form-section">
+          <h3 class="section-title"><i class="fas fa-cut"></i> Select Service</h3>
+
+          <div class="service-options">
+            <div class="service-option" onclick="selectService(this, 'full-package')">
+              <input type="radio" name="service" value="full-package" required />
+              <div class="service-name">✨ Full Grooming Package</div>
+              <div style="font-size: 0.9rem; margin: 0.5rem 0;">
+                Bath, Dry, Haircut, Nail Clipping, Teeth & Ear Cleaning
+              </div>
+              <div class="service-price">₹1,250 - ₹1,450</div>
+            </div>
+
+            <div class="service-option" onclick="selectService(this, 'bath-only')">
+              <input type="radio" name="service" value="bath-only" required />
+              <div class="service-name">🛁 Bath & Dry</div>
+              <div style="font-size: 0.9rem; margin: 0.5rem 0;">Regular or Medical Bath</div>
+              <div class="service-price">₹800 - ₹1,200</div>
+            </div>
+
+            <div class="service-option" onclick="selectService(this, 'custom')">
+              <input type="radio" name="service" value="custom" required />
+              <div class="service-name">🎯 Custom Services</div>
+              <div style="font-size: 0.9rem; margin: 0.5rem 0;">Individual services as needed</div>
+              <div class="service-price">Price varies</div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="serviceNotes">Additional Service Requirements</label>
+            <textarea
+              id="serviceNotes"
+              name="serviceNotes"
+              placeholder="Any specific grooming requests or preferences"
+            ></textarea>
+          </div>
+        </div>
+
+        <!-- Appointment Details -->
+        <div class="form-section">
+          <h3 class="section-title"><i class="fas fa-calendar"></i> Preferred Appointment Time</h3>
+          <div class="datetime-row">
+            <div class="form-group">
+              <label for="preferredDate">Preferred Date *</label>
+              <input type="date" id="preferredDate" name="preferredDate" required />
+            </div>
+            <div class="form-group">
+              <label for="preferredTime">Preferred Time *</label>
+              <select id="preferredTime" name="preferredTime" required>
+                <option value="">Select Time</option>
+                <option value="9:00-10:00">9:00 AM - 10:00 AM</option>
+                <option value="10:00-11:00">10:00 AM - 11:00 AM</option>
+                <option value="11:00-12:00">11:00 AM - 12:00 PM</option>
+                <option value="12:00-13:00">12:00 PM - 1:00 PM</option>
+                <option value="13:00-14:00">1:00 PM - 2:00 PM</option>
+                <option value="14:00-15:00">2:00 PM - 3:00 PM</option>
+                <option value="15:00-16:00">3:00 PM - 4:00 PM</option>
+                <option value="16:00-17:00">4:00 PM - 5:00 PM</option>
+                <option value="17:00-18:00">5:00 PM - 6:00 PM</option>
+                <option value="18:00-19:00">6:00 PM - 7:00 PM</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="alternateDate">Alternate Date (Optional)</label>
+            <input type="date" id="alternateDate" name="alternateDate" />
+          </div>
+        </div>
+
+        <div class="submit-section">
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i> Submit Booking Request
+          </button>
+          <p style="margin-top: 1rem; color: #666; font-size: 0.9rem;">
+            We'll contact you within 2 hours to confirm your appointment
+          </p>
+        </div>
+      </form>
+
+      <div class="emergency-contact">
+        <div class="emergency-title">Need Immediate Booking? Call Now!</div>
+        <div class="emergency-number">📞 +91 7600243900</div>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const today = new Date().toISOString().split('T')[0];
+      document.getElementById('preferredDate').min = today;
+      document.getElementById('alternateDate').min = today;
+      initializeFormValidation();
+    });
+
+    function selectService(element, value) {
+      document.querySelectorAll('.service-option').forEach((opt) => opt.classList.remove('selected'));
+      element.classList.add('selected');
+      element.querySelector('input[type="radio"]').checked = true;
+      updatePricingDisplay(value);
+    }
+
+    function selectSize(element, value) {
+      document.querySelectorAll('.size-option').forEach((opt) => opt.classList.remove('selected'));
+      element.classList.add('selected');
+      element.querySelector('input[type="radio"]').checked = true;
+      updatePricingForSize(value);
+    }
+
+    function updatePricingDisplay(serviceType) {
+      if (serviceType === 'custom') {
+        document.getElementById('serviceNotes').placeholder =
+          'Please specify which individual services you need (haircut, bath, nail clipping, etc.)';
+      } else {
+        document.getElementById('serviceNotes').placeholder =
+          'Any specific grooming requests or preferences';
+      }
+    }
+
+    function updatePricingForSize(size) {
+      // Add dynamic pricing updates here if needed
+    }
+
+    function initializeFormValidation() {
+      const form = document.getElementById('bookingForm');
+      const inputs = form.querySelectorAll('input[required], select[required], textarea[required]');
+      inputs.forEach((input) => {
+        input.addEventListener('blur', () => validateField(input));
+        input.addEventListener('input', () => clearFieldError(input));
+      });
+    }
+
+    function validateField(field) {
+      const value = field.value.trim();
+      let isValid = true;
+      let errorMessage = '';
+
+      if (field.hasAttribute('required') && !value) {
+        isValid = false;
+        errorMessage = 'This field is required';
+      }
+
+      switch (field.type) {
+        case 'email':
+          if (value && !validateEmail(value)) {
+            isValid = false;
+            errorMessage = 'Please enter a valid email address';
+          }
+          break;
+        case 'tel':
+          if (value && !validatePhone(value)) {
+            isValid = false;
+            errorMessage = 'Please enter a valid phone number';
+          }
+          break;
+        case 'date':
+          if (value && new Date(value) < new Date()) {
+            isValid = false;
+            errorMessage = 'Please select a future date';
+          }
+          break;
+      }
+
+      if (!isValid) showFieldError(field, errorMessage);
+      else clearFieldError(field);
+
+      return isValid;
+    }
+
+    function showFieldError(field, message) {
+      clearFieldError(field);
+      field.style.borderColor = '#FF6B6B';
+      const errorDiv = document.createElement('div');
+      errorDiv.className = 'field-error';
+      errorDiv.style.color = '#FF6B6B';
+      errorDiv.style.fontSize = '0.85rem';
+      errorDiv.style.marginTop = '0.25rem';
+      errorDiv.textContent = message;
+      field.parentNode.appendChild(errorDiv);
+    }
+
+    function clearFieldError(field) {
+      field.style.borderColor = '#e1e5e9';
+      const errorDiv = field.parentNode.querySelector('.field-error');
+      if (errorDiv) errorDiv.remove();
+    }
+
+    function validateEmail(email) {
+      const re = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      return re.test(email);
+    }
+
+    function validatePhone(phone) {
+      const re = /^[+\\d\\s\\-\\(\\)]{10,}$/;
+      return re.test(phone);
+    }
+
+    document.getElementById('bookingForm').addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      let isFormValid = true;
+      const requiredFields = this.querySelectorAll('input[required], select[required], textarea[required]');
+      requiredFields.forEach((field) => {
+        if (!validateField(field)) isFormValid = false;
+      });
+
+      if (!this.querySelector('input[name="service"]:checked')) {
+        isFormValid = false;
+        alert('Please select a service');
+        document.querySelector('.service-options').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if (!this.querySelector('input[name="petSize"]:checked')) {
+        isFormValid = false;
+        alert('Please select your pet size');
+        document.querySelector('.size-options').scrollIntoView({ behavior: 'smooth' });
+        return;
+      }
+
+      if (!isFormValid) {
+        alert('Please fill in all required fields correctly');
+        return;
+      }
+
+      const submitBtn = document.querySelector('.submit-btn');
+      const originalText = submitBtn.innerHTML;
+
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Submitting...';
+      submitBtn.disabled = true;
+
+      setTimeout(() => {
+        document.getElementById('successMessage').classList.add('show');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        this.reset();
+        document.querySelectorAll('.selected').forEach((el) => el.classList.remove('selected'));
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
+        setTimeout(() => {
+          document.getElementById('successMessage').classList.remove('show');
+        }, 10000);
+      }, 2000);
+    });
+  </script>
+</body>
+</html>
