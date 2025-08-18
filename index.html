@@ -1,0 +1,1830 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cuddles & Bubbles | Premium Pet Grooming Services 🐾</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Fredoka+One:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+    :root {
+      /* Color variables */
+      --pet-orange: #FF7F50;
+      --pet-orange-light: #FFA07A;
+      --pet-orange-dark: #FF6347;
+      --pet-sky-blue: #87CEEB;
+      --pet-sky-blue-light: #B0E0E6;
+      --pet-sky-blue-dark: #4682B4;
+      --pet-gold: #FFD700;
+      --pet-white: #FFFFFF;
+      --pet-cream: #FFFEF7;
+      --pet-dark: #2F4F4F;
+      --pet-gray-light: #F8F9FA;
+      
+      /* Design system */
+      --color-primary: var(--pet-orange);
+      --color-primary-hover: var(--pet-orange-light);
+      --color-primary-active: var(--pet-orange-dark);
+      --color-secondary: var(--pet-sky-blue);
+      --color-background: var(--pet-cream);
+      --color-surface: var(--pet-white);
+      --color-text: var(--pet-dark);
+      --color-accent: var(--pet-gold);
+      
+      /* Gradients */
+      --gradient-primary: linear-gradient(135deg, var(--pet-orange) 0%, var(--pet-orange-light) 100%);
+      --gradient-secondary: linear-gradient(135deg, var(--pet-sky-blue) 0%, var(--pet-sky-blue-light) 100%);
+      --gradient-hero: linear-gradient(135deg, rgba(255, 127, 80, 0.9) 0%, rgba(135, 206, 235, 0.8) 100%);
+      
+      /* Shadows */
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.12);
+      --shadow-md: 0 4px 6px rgba(0,0,0,0.1);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.1);
+      --shadow-xl: 0 20px 50px rgba(0,0,0,0.15);
+      
+      /* Spacing */
+      --space-xs: 0.5rem;
+      --space-sm: 1rem;
+      --space-md: 1.5rem;
+      --space-lg: 2rem;
+      --space-xl: 3rem;
+      
+      /* Border radius */
+      --radius-sm: 4px;
+      --radius-md: 8px;
+      --radius-lg: 12px;
+      --radius-xl: 16px;
+      --radius-full: 9999px;
+    }
+
+    /* Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: var(--color-background);
+      color: var(--color-text);
+      line-height: 1.6;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--space-md);
+    }
+
+    section {
+      padding: var(--space-xl) 0;
+      position: relative;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Typography */
+    h1, h2, h3, h4, h5, h6 {
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: var(--space-sm);
+    }
+
+    h1 { font-size: 2.5rem; }
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.75rem; }
+    h4 { font-size: 1.5rem; }
+    h5 { font-size: 1.25rem; }
+    h6 { font-size: 1rem; }
+
+    @media (min-width: 768px) {
+      h1 { font-size: 3rem; }
+      h2 { font-size: 2.5rem; }
+      h3 { font-size: 2rem; }
+    }
+
+    p {
+      margin-bottom: var(--space-sm);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      gap: var(--space-xs);
+      border: none;
+    }
+
+    .btn--primary {
+      background: var(--gradient-primary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn--primary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn--secondary {
+      background: var(--gradient-secondary);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn--secondary:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Header Styles */
+    .header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-bottom: 2px solid var(--pet-orange);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      transition: all 0.3s ease;
+    }
+
+    .header.scrolled {
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: var(--shadow-md);
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: var(--space-sm);
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .nav__brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .nav__title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--pet-sky-blue);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      transition: all 0.3s ease;
+    }
+
+    .nav__title:hover {
+      transform: scale(1.05);
+    }
+
+    .brand-emoji {
+      animation: bounce 2s infinite;
+    }
+
+    .nav__tagline {
+      font-size: 0.75rem;
+      color: var(--pet-orange);
+      margin: 0;
+      font-weight: 500;
+    }
+
+    .nav__menu {
+      display: flex;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      gap: var(--space-md);
+      align-items: center;
+    }
+
+    .nav__item {
+      margin: 0;
+    }
+
+    .nav__link {
+      color: var(--color-text);
+      font-weight: 500;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-full);
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+    }
+
+    .nav__link::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--gradient-primary);
+      transition: left 0.3s ease;
+      z-index: -1;
+    }
+
+    .nav__link:hover::before {
+      left: 0;
+    }
+
+    .nav__link:hover {
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .nav__cta {
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+      animation: pulse 3s infinite;
+      padding: var(--space-xs) var(--space-md);
+    }
+
+    .nav__cta:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 6px 20px rgba(255, 127, 80, 0.4);
+    }
+
+    .nav__toggle {
+      display: none;
+      flex-direction: column;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: var(--space-xs);
+      gap: 0.25rem;
+    }
+
+    .nav__toggle span {
+      width: 24px;
+      height: 3px;
+      background: var(--pet-orange);
+      transition: all 0.3s ease;
+      border-radius: 2px;
+    }
+
+    /* Hero Section */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(12, 12, 12, 0.85)), 
+                  url('https://images.unsplash.com/photo-1633722715463-d30f4f325e24?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      padding-top: 80px;
+    }
+
+    .hero__content {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: var(--space-xl) var(--space-md);
+      text-align: center;
+      position: relative;
+      z-index: 2;
+      animation: fadeInUp 1s ease;
+    }
+
+    .hero__title {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 800;
+      color: var(--pet-dark);
+      margin-bottom: var(--space-sm);
+      line-height: 1.2;
+      text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+    }
+
+    .hero__title span {
+      color: var(--pet-orange);
+      display: block;
+    }
+
+    .hero__subtitle {
+      font-size: 1.25rem;
+      color: var(--pet-dark);
+      margin-bottom: var(--space-lg);
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      font-weight: 400;
+    }
+
+    .hero__buttons {
+      display: flex;
+      gap: var(--space-md);
+      justify-content: center;
+      margin-bottom: var(--space-lg);
+      flex-wrap: wrap;
+    }
+
+    .hero__cta {
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--space-sm) var(--space-lg);
+      border-radius: var(--radius-full);
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow-md);
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .hero__cta:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero__image {
+      margin-top: var(--space-lg);
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .hero__image img {
+      width: 100px;
+      height: 100px;
+      object-fit: cover;
+      border-radius: var(--radius-xl);
+      border: 3px solid white;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+    }
+
+    .hero__image img:hover {
+      transform: translateY(-5px) scale(1.05);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--space-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      animation: bounce 2s infinite;
+    }
+
+    .scroll-indicator {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      color: var(--pet-orange);
+      font-weight: 600;
+    }
+
+    /* Section Header */
+    .section-header {
+      text-align: center;
+      margin-bottom: var(--space-xl);
+    }
+
+    .section-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+    }
+
+    .section-title {
+      position: relative;
+      display: inline-block;
+      margin-bottom: var(--space-sm);
+    }
+
+    .title-decoration {
+      position: absolute;
+      right: -30px;
+      top: -15px;
+      font-size: 1.5rem;
+    }
+
+    .section-subtitle {
+      max-width: 600px;
+      margin: 0 auto;
+      color: var(--pet-dark);
+      opacity: 0.8;
+    }
+
+    /* Stats */
+    .hero__stats {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-xl);
+      margin: var(--space-xl) 0;
+      flex-wrap: wrap;
+    }
+
+    .stat {
+      text-align: center;
+      background: white;
+      padding: var(--space-md);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      min-width: 120px;
+      transition: all 0.3s ease;
+    }
+
+    .stat:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat__number {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--pet-orange);
+      margin-bottom: var(--space-xs);
+    }
+
+    .stat__label {
+      font-size: 0.875rem;
+      color: var(--pet-dark);
+      opacity: 0.8;
+    }
+
+    /* Service Categories */
+    .service-category {
+      background: white;
+      border-radius: var(--radius-xl);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-xl);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .service-category:hover {
+      box-shadow: var(--shadow-md);
+      transform: translateY(-3px);
+    }
+
+    .category-header {
+      text-align: center;
+      margin-bottom: var(--space-lg);
+    }
+
+    .category-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .category-icon {
+      font-size: 1.5rem;
+    }
+
+    /* Service Highlight */
+    .service-highlight {
+      background: var(--pet-cream);
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      margin-bottom: var(--space-lg);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .highlight-badge {
+      position: absolute;
+      top: 0;
+      right: 0;
+      background: var(--pet-gold);
+      color: var(--pet-dark);
+      padding: var(--space-xs) var(--space-sm);
+      border-bottom-left-radius: var(--radius-lg);
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .highlight-title {
+      font-size: 1.5rem;
+      color: var(--pet-orange);
+      margin-bottom: var(--space-md);
+      text-align: center;
+    }
+
+    .highlight-includes {
+      margin-bottom: var(--space-md);
+    }
+
+    .includes-header {
+      font-weight: 600;
+      margin-bottom: var(--space-sm);
+      text-align: center;
+    }
+
+    .includes-list {
+      list-style: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--space-sm);
+    }
+
+    .includes-list li {
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    /* Pricing Grid */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin-top: var(--space-lg);
+    }
+
+    .pricing-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .pricing-header {
+      font-weight: 600;
+      margin-bottom: var(--space-xs);
+      font-size: 1.1rem;
+    }
+
+    .pricing-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--pet-orange);
+    }
+
+    /* Individual Services */
+    .individual-services {
+      margin-top: var(--space-xl);
+    }
+
+    .individual-title {
+      text-align: center;
+      font-size: 1.5rem;
+      color: var(--pet-sky-blue);
+      margin-bottom: var(--space-lg);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .service-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-md);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .card-header {
+      margin-bottom: var(--space-md);
+      text-align: center;
+    }
+
+    .card-title {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-sm);
+    }
+
+    .card-emoji {
+      font-size: 1.25rem;
+    }
+
+    .service-list {
+      display: grid;
+      gap: var(--space-sm);
+    }
+
+    .service-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--space-xs) var(--space-sm);
+      background: var(--pet-gray-light);
+      border-radius: var(--radius-sm);
+    }
+
+    .service-name {
+      font-weight: 500;
+    }
+
+    .service-price {
+      font-weight: 600;
+      color: var(--pet-orange);
+    }
+
+    /* Cat Services */
+    .cat-services {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+
+    .package-card {
+      position: relative;
+      background: var(--pet-cream);
+      border: 2px dashed var(--pet-orange);
+    }
+
+    .package-badge {
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: var(--pet-gold);
+      color: var(--pet-dark);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-full);
+      font-size: 0.75rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      white-space: nowrap;
+    }
+
+    .package-content {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-md);
+    }
+
+    .package-includes {
+      flex: 1;
+    }
+
+    .package-pricing {
+      text-align: center;
+    }
+
+    .package-price {
+      margin-bottom: var(--space-sm);
+    }
+
+    .price-label {
+      display: block;
+      font-size: 0.875rem;
+      margin-bottom: var(--space-xs);
+    }
+
+    .price-value {
+      font-size: 1.75rem;
+      font-weight: 700;
+      color: var(--pet-orange);
+    }
+
+    .savings-badge {
+      background: var(--pet-sky-blue-light);
+      color: var(--pet-dark);
+      padding: var(--space-xs) var(--space-sm);
+      border-radius: var(--radius-full);
+      font-size: 0.875rem;
+      font-weight: 600;
+    }
+
+    /* Testimonials */
+    .testimonials {
+      background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)), 
+                  url('https://images.unsplash.com/photo-1583337130417-3346a1be7dee?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1964&q=80');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: var(--space-md);
+    }
+
+    .testimonial-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .testimonial-rating {
+      color: var(--pet-gold);
+      margin-bottom: var(--space-sm);
+    }
+
+    .testimonial-text {
+      font-style: italic;
+      margin-bottom: var(--space-md);
+      position: relative;
+    }
+
+    .testimonial-text::before {
+      content: '"';
+      font-size: 3rem;
+      position: absolute;
+      top: -20px;
+      left: -10px;
+      color: var(--pet-gray-light);
+      z-index: 0;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+    }
+
+    .author-info {
+      flex: 1;
+    }
+
+    .author-name {
+      font-weight: 600;
+    }
+
+    .author-pet {
+      font-size: 0.875rem;
+      opacity: 0.8;
+    }
+
+    /* Contact Section */
+    .contact {
+      position: relative;
+      background: var(--pet-cream);
+    }
+
+    .contact__background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') center/cover;
+      opacity: 0.1;
+      z-index: 0;
+    }
+
+    .contact__content {
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-md);
+      margin: var(--space-xl) 0;
+    }
+
+    .contact-card {
+      background: white;
+      border-radius: var(--radius-lg);
+      padding: var(--space-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: all 0.3s ease;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .contact-icon {
+      width: 60px;
+      height: 60px;
+      background: var(--gradient-primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-md);
+      font-size: 1.5rem;
+    }
+
+    .contact-title {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-sm);
+      color: var(--pet-orange);
+    }
+
+    .contact-info {
+      margin-bottom: var(--space-md);
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      background: var(--gradient-primary);
+      color: white;
+      padding: var(--space-xs) var(--space-md);
+      border-radius: var(--radius-full);
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .contact-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .contact-hours p {
+      font-size: 0.875rem;
+    }
+
+    .contact-hours p strong {
+      color: var(--pet-orange);
+    }
+
+    /* Social Section */
+    .social-section {
+      text-align: center;
+      margin-top: var(--space-xl);
+    }
+
+    .social-title {
+      font-size: 1.5rem;
+      margin-bottom: var(--space-md);
+      color: var(--pet-sky-blue);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-md);
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-xs);
+      padding: var(--space-sm) var(--space-md);
+      border-radius: var(--radius-full);
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .social-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .instagram {
+      background: linear-gradient(45deg, #405DE6, #5851DB, #833AB4, #C13584, #E1306C, #FD1D1D);
+    }
+
+    .facebook {
+      background: #1877F2;
+    }
+
+    .whatsapp {
+      background: #25D366;
+    }
+
+    /* Footer */
+    .footer {
+      background: var(--pet-dark);
+      color: white;
+      padding: var(--space-xl) 0 0;
+    }
+
+    .footer__content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: var(--space-xl);
+      margin-bottom: var(--space-xl);
+    }
+
+    .footer__brand {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer__title {
+      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer__tagline {
+      font-size: 0.875rem;
+      color: var(--pet-sky-blue-light);
+      margin-bottom: var(--space-sm);
+    }
+
+    .footer__description {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+
+    .footer__links {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer__subtitle {
+      font-size: 1.25rem;
+      margin-bottom: var(--space-md);
+      color: var(--pet-sky-blue-light);
+    }
+
+    .footer__list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-xs);
+    }
+
+    .footer__list a {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: var(--space-xs);
+    }
+
+    .footer__list a:hover {
+      color: var(--pet-orange);
+      transform: translateX(5px);
+    }
+
+    .footer__contact {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .footer__contact-item {
+      display: flex;
+      align-items: center;
+      gap: var(--space-sm);
+      margin-bottom: var(--space-sm);
+      font-size: 0.875rem;
+    }
+
+    .footer__contact-item i {
+      color: var(--pet-orange);
+    }
+
+    .footer__bottom {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: var(--space-md) 0;
+      text-align: center;
+    }
+
+    .footer__copyright {
+      font-size: 0.75rem;
+      opacity: 0.7;
+    }
+
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: var(--space-md);
+      right: var(--space-md);
+      width: 50px;
+      height: 50px;
+      background: var(--gradient-primary);
+      color: white;
+      border: none;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: var(--shadow-md);
+      transition: all 0.3s ease;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .nav__menu {
+        position: fixed;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(255, 255, 255, 0.98);
+        backdrop-filter: blur(10px);
+        flex-direction: column;
+        padding: var(--space-lg);
+        box-shadow: var(--shadow-lg);
+        border-top: 2px solid var(--pet-orange);
+        transform: translateY(-100%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        gap: var(--space-sm);
+      }
+
+      .nav__menu.active {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+
+      .nav__toggle {
+        display: flex;
+      }
+
+      .nav__toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+      }
+
+      .nav__toggle.active span:nth-child(2) {
+        opacity: 0;
+      }
+
+      .nav__toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+      }
+
+      .hero__buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .hero__image img {
+        width: 80px;
+        height: 80px;
+      }
+
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    @keyframes bounce {
+      0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+      40% { transform: translateY(-15px); }
+      60% { transform: translateY(-7px); }
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+   </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header" id="header">
+        <nav class="nav container">
+            <div class="nav__brand">
+                <h1 class="nav__title">
+                    <span class="brand-emoji">🐾</span>
+                    cuddlesnbubbles
+                </h1>
+                <p class="nav__tagline">Premium Pet Grooming</p>
+            </div>
+            <ul class="nav__menu" id="navMenu">
+                <li class="nav__item">
+                    <a href="#home" class="nav__link">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#services" class="nav__link">
+                        <i class="fas fa-cut"></i>
+                        Services
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#testimonials" class="nav__link">
+                        <i class="fas fa-star"></i>
+                        Reviews
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="#contact" class="nav__link">
+                        <i class="fas fa-phone"></i>
+                        Contact
+                    </a>
+                </li>
+                <li class="nav__item">
+                    <a href="booknow.html" class="btn btn--primary nav__cta">
+                         Book Now
+                    </a>
+                </li>
+            </ul>
+            <button class="nav__toggle" id="navToggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Hero Section - Redesigned -->
+    <section id="home" class="hero">
+        <div class="hero__content">
+            <h1 class="hero__title">
+                Cuddles & Bubbles<br>
+                <span>Premium At-Home Pet Grooming Services</span>
+            </h1>
+            <p class="hero__subtitle">
+                Keeping your furry friends happy, healthy, and beautiful with love and expertise
+            </p>
+            <div class="hero__buttons">
+                <a href="#services" class="hero__cta">
+                    <i class="fas fa-cut"></i>
+                    View Services
+                </a>
+                <a href="booknow.html" class="hero__cta" style="background: var(--gradient-secondary);">
+                    <i class="fas fa-phone"></i>
+                    Book Now
+                </a>
+            </div>
+            <div class="hero__image">
+                <img src="https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80" alt="Happy Dog 1">
+                <img src="https://images.unsplash.com/photo-1588943211346-0908a1fb0b01" alt="Happy Dog 2">
+                <img src="https://images.unsplash.com/photo-1583337130417-3346a1be7dee" alt="Happy Dog 3">
+            </div>
+        </div>
+                
+        <div class="hero__scroll">
+            <div class="scroll-indicator">
+                <span>Scroll Down</span>
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-icon">✂️</span>
+                    Our Services
+                </div>
+                <h2 class="section-title">
+                    Premium Grooming Services
+                    <span class="title-decoration">🎯</span>
+                </h2>
+                <p class="section-subtitle">
+                    Professional care for your beloved pets with state-of-the-art equipment and techniques
+                </p>
+            </div>
+            <div class="hero__stats">
+                <div class="stat">
+                    <div class="stat__number">500+</div>
+                    <div class="stat__label">Happy Pets 🐾</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number">5⭐</div>
+                    <div class="stat__label">Rating</div>
+                </div>
+                <div class="stat">
+                    <div class="stat__number">3+</div>
+                    <div class="stat__label">Years Experience</div>
+                </div>
+            </div>
+            
+            <!-- Dog Services -->
+            <div class="service-category">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <span class="category-icon">🐕</span>
+                        Dog Grooming Services
+                    </h3>
+                </div>
+
+                <!-- Full Grooming Package -->
+                <div class="service-highlight">
+                    <div class="highlight-badge">
+                        <span class="badge-icon">⭐</span>
+                        Most Popular
+                    </div>
+                    <h4 class="highlight-title">Full Grooming Package</h4>
+                    <div class="highlight-includes">
+                        <p class="includes-header">Complete Package Includes:</p>
+                        <ul class="includes-list">
+                            <li><i class="fas fa-check"></i> ✨ Bath & Dry</li>
+                            <li><i class="fas fa-check"></i> ✂️ Full Body Haircut</li>
+                            <li><i class="fas fa-check"></i> 💅 Nail Clipping</li>
+                            <li><i class="fas fa-check"></i> 🦷 Teeth Cleaning</li>
+                            <li><i class="fas fa-check"></i> 👂 Ear Cleaning</li>
+                            <li><i class="fas fa-check"></i> 🌸 Spritz of Perfume</li>
+                        </ul>
+                    </div>
+                    <div class="pricing-grid">
+                        <div class="pricing-card">
+                            <div class="pricing-header">Small Dogs 🐕‍🦺</div>
+                            <div class="pricing-value">₹1,250</div>
+                        </div>
+                        <div class="pricing-card">
+                            <div class="pricing-header">Medium Dogs 🐩</div>
+                            <div class="pricing-value">₹1,350</div>
+                        </div>
+                        <div class="pricing-card">
+                            <div class="pricing-header">Large Dogs 🦮</div>
+                            <div class="pricing-value">₹1,450</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Individual Dog Services -->
+                <div class="individual-services">
+                    <h4 class="individual-title">Individual Services</h4>
+                    <div class="services-grid">
+                        <!-- Small Dogs -->
+                        <div class="service-card">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    <span class="card-emoji">🐕‍🦺</span>
+                                    Small Dogs
+                                </h5>
+                            </div>
+                            <div class="service-list">
+                                <div class="service-item">
+                                    <span class="service-name">Regular Bath 🛁</span>
+                                    <span class="service-price">₹800</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Medical Bath 💊</span>
+                                    <span class="service-price">₹1,000</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Aroma Spa 🌸</span>
+                                    <span class="service-price">₹1,100</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Tick Removal 🐛</span>
+                                    <span class="service-price">₹300</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Ear Cleaning 👂</span>
+                                    <span class="service-price">₹50</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Tooth Cleaning 🦷</span>
+                                    <span class="service-price">₹150</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Nail Clipping 💅</span>
+                                    <span class="service-price">₹150</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Haircut ✂️</span>
+                                    <span class="service-price">₹300</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Medium Dogs -->
+                        <div class="service-card">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    <span class="card-emoji">🐩</span>
+                                    Medium Dogs
+                                </h5>
+                            </div>
+                            <div class="service-list">
+                                <div class="service-item">
+                                    <span class="service-name">Regular Bath 🛁</span>
+                                    <span class="service-price">₹900</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Medical Bath 💊</span>
+                                    <span class="service-price">₹1,100</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Aroma Spa 🌸</span>
+                                    <span class="service-price">₹1,200</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Tick Removal 🐛</span>
+                                    <span class="service-price">₹300</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Ear Cleaning 👂</span>
+                                    <span class="service-price">₹50</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Tooth Cleaning 🦷</span>
+                                    <span class="service-price">₹150</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Nail Clipping 💅</span>
+                                    <span class="service-price">₹150</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Haircut ✂️</span>
+                                    <span class="service-price">₹350</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Large Dogs -->
+                        <div class="service-card">
+                            <div class="card-header">
+                                <h5 class="card-title">
+                                    <span class="card-emoji">🦮</span>
+                                    Large Dogs
+                                </h5>
+                            </div>
+                            <div class="service-list">
+                                <div class="service-item">
+                                    <span class="service-name">Regular Bath 🛁</span>
+                                    <span class="service-price">₹1,000</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Medical Bath 💊</span>
+                                    <span class="service-price">₹1,200</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Aroma Spa 🌸</span>
+                                    <span class="service-price">₹1,300</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Tick Removal 🐛</span>
+                                    <span class="service-price">₹400</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Ear Cleaning 👂</span>
+                                    <span class="service-price">₹50</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Tooth Cleaning 🦷</span>
+                                    <span class="service-price">₹200</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Nail Clipping 💅</span>
+                                    <span class="service-price">₹150</span>
+                                </div>
+                                <div class="service-item">
+                                    <span class="service-name">Haircut ✂️</span>
+                                    <span class="service-price">₹400</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cat Services -->
+            <div class="service-category">
+                <div class="category-header">
+                    <h3 class="category-title">
+                        <span class="category-icon">🐱</span>
+                        Cat Grooming Services
+                    </h3>
+                </div>
+
+                <div class="services-grid cat-services">
+                    <!-- Cat Services Card -->
+                    <div class="service-card cat-card">
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <span class="card-emoji">🐈</span>
+                                Cat Services
+                            </h5>
+                        </div>
+                        <div class="service-list">
+                            <div class="service-item">
+                                <span class="service-name">Regular Bath 🛁</span>
+                                <span class="service-price">₹800</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Medical Bath 💊</span>
+                                <span class="service-price">₹1,100</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Aroma Spa 🌸</span>
+                                <span class="service-price">₹1,400</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Tick Removal 🐛</span>
+                                <span class="service-price">₹300</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Ear Cleaning 👂</span>
+                                <span class="service-price">₹50</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Tooth Cleaning 🦷</span>
+                                <span class="service-price">₹150</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Hair Cut ✂️</span>
+                                <span class="service-price">₹500</span>
+                            </div>
+                            <div class="service-item">
+                                <span class="service-name">Nail Clipping 💅</span>
+                                <span class="service-price">₹300</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cat Full Grooming Package -->
+                    <div class="service-card package-card">
+                        <div class="package-badge">
+                            <span class="badge-icon">🎯</span>
+                            Best Value
+                        </div>
+                        <div class="card-header">
+                            <h5 class="card-title">
+                                <span class="card-emoji">😻</span>
+                                Full Grooming Package
+                            </h5>
+                        </div>
+                        <div class="package-content">
+                            <div class="package-includes">
+                                <p class="includes-header">Complete Package:</p>
+                                <ul class="includes-list">
+                                    <li><i class="fas fa-check"></i> ✨ Bath & Dry</li>
+                                    <li><i class="fas fa-check"></i> ✂️ Full Body Haircut</li>
+                                    <li><i class="fas fa-check"></i> 💅 Nail Clipping</li>
+                                    <li><i class="fas fa-check"></i> 🦷 Teeth Cleaning</li>
+                                    <li><i class="fas fa-check"></i> 👂 Ear Cleaning</li>
+                                    <li><i class="fas fa-check"></i> 🌸 Spritz of Perfume</li>
+                                </ul>
+                            </div>
+                            <div class="package-pricing">
+                                <div class="package-price">
+                                    <span class="price-label">Complete Package:</span>
+                                    <span class="price-value">₹1,450</span>
+                                </div>
+                                <div class="savings-badge">
+                                    <span class="savings-text">💰 Save ₹250!</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-badge">
+                    <span class="badge-icon">⭐</span>
+                    Testimonials
+                </div>
+                <h2 class="section-title">
+                    Happy Pet Parents
+                    <span class="title-decoration">💖</span>
+                </h2>
+                <p class="section-subtitle">
+                    What our clients say about our premium grooming services
+                </p>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Best pet grooming services. My Bella was so comfortable. The staff is well trained. Highly recommended. Must get the groomings from them if you love your pet."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Kiran Sharda</div>
+                            <div class="author-pet">Bella's Mom 🐕</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Fantastic service, polite, friendly and professional. Best dog groomer by far! Would highly recommend."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Abhishek Jaswal</div>
+                            <div class="author-pet">Happy Pet Parent 🐾</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="testimonial-text">
+                        "Excellent service and very professional! Highly recommend to everyone."
+                    </p>
+                    <div class="testimonial-author">
+                        <div class="author-info">
+                            <div class="author-name">Navneet Kaur</div>
+                            <div class="author-pet">Satisfied Customer ✨</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="contact__background"></div>
+        <div class="container">
+            <div class="contact__content">
+                <div class="section-header">
+                    <div class="section-badge">
+                        <span class="badge-icon">📞</span>
+                        Contact Us
+                    </div>
+                    <h2 class="section-title">
+                        Ready to Pamper Your Pet?
+                        <span class="title-decoration">🛁</span>
+                    </h2>
+                    <p class="section-subtitle">
+                        Book your grooming appointment today and give your pet the care they deserve
+                    </p>
+                </div>
+
+                <div class="contact-grid">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h4 class="contact-title">Call Us</h4>
+                        <p class="contact-info">+91 7600243900</p>
+                        <a href="tel:+917600243900" class="contact-btn">
+                            <i class="fas fa-phone"></i>
+                            Call Now
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h4 class="contact-title">Email Us</h4>
+                        <p class="contact-info">Cuddlesnbubblesludhiana@gmail.com</p>
+                        <a href="mailto:Cuddlesnbubblesludhiana@gmail.com" class="contact-btn">
+                            <i class="fas fa-envelope"></i>
+                            Send Email
+                        </a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h4 class="contact-title">Visit Us</h4>
+                        <p class="contact-info">Punjab, Ludhiana</p>
+                        <div class="contact-hours">
+                            <p><strong>Mon-Sat:</strong> 9AM - 7PM</p>
+                            <p><strong>Sunday:</strong> 10AM - 5PM</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social-section">
+                    <h3 class="social-title">Follow Us</h3>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/cuddlesnbubbles_?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" class="social-btn instagram">
+                            <i class="fab fa-instagram"></i>
+                            Instagram
+                        </a>
+                        <a href="https://www.facebook.com/humtumaurpoonch" target="_blank" class="social-btn facebook">
+                            <i class="fab fa-facebook-f"></i>
+                            Facebook
+                        </a>
+                        <a href="https://wa.me/917600243900" target="_blank" class="social-btn whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__brand">
+                    <h3 class="footer__title">
+                        <span class="brand-emoji">🐾</span>
+                        cuddlesnbubbles
+                    </h3>
+                    <p class="footer__tagline">Premium Pet Grooming Services</p>
+                    <p class="footer__description">
+                        Professional pet grooming services with care and love for your furry family members 💖
+                    </p>
+                </div>
+                
+                <div class="footer__links">
+                    <h4 class="footer__subtitle">Quick Links</h4>
+                    <ul class="footer__list">
+                        <li><a href="#home">Home 🏠</a></li>
+                        <li><a href="#services">Services ✂️</a></li>
+                        <li><a href="#testimonials">Reviews ⭐</a></li>
+                        <li><a href="#contact">Contact 📞</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer__contact">
+                    <h4 class="footer__subtitle">Contact Info</h4>
+                    <div class="footer__contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+91 7600243900</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>Cuddlesnbubblesludhiana@gmail.com</span>
+                    </div>
+                    <div class="footer__contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Punjab, Ludhiana</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer__bottom">
+                <p class="footer__copyright">
+                    &copy; 2025 cuddlesnbubbles . All Rights Reserved. Made with 💖 for pets and their families.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Mobile Navigation Toggle
+        const navToggle = document.getElementById('navToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        navToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            navToggle.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav__link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                navToggle.classList.remove('active');
+            });
+        });
+
+        // Header scroll effect
+        const header = document.getElementById('header');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Back to top button
+        const backToTop = document.getElementById('backToTop');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 300) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
